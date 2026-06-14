@@ -2,6 +2,7 @@
  
   programs.hyprland.enable = true;
   programs.fish.enable = true;
+  programs.steam.enable = true;
 
   environment.systemPackages = with pkgs; [
     wget
@@ -15,6 +16,9 @@
     hyprlauncher
     git  
     gh
+    stoat-desktop
+    rofi
+    btop
   ];
 
 }

@@ -21,6 +21,12 @@
     ];
   };
   
+  programs.git = {
+    enable = true;
+    userName = "Nate Johnson";
+    userEmail = "naterjohnson09@gmail.com";
+
+  };
 
   programs.fish = {
     enable = true;
@@ -29,7 +35,7 @@
       ptest = "ping 1.1.1.1";
       ll = "ls -l";
       nixconf = "nano /home/crispy/.config/nixos/hosts/gamer/configuration.nix";
-      pkgconf = "nano /home/crispy/.config/nixos/modules/packages.nix";
+      pkgconf = "nano /home/crispy/.config/nixos/modules/nixos/packages.nix";
       nixrebuilds = "sudo nixos-rebuild switch --flake /home/crispy/.config/nixos/#GAMER";
       nixrebuildt = "sudo nixos-rebuild test --flake /home/crispy/.config/nixos/#GAMER";
       nixrebuild = "sudo nixos-rebuild";

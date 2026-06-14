@@ -114,6 +114,10 @@
  hardware.nvidia.open = true;
  hardware.nvidia.modesetting.enable = true;
 
+ # let stoat work ;-;
+ nixpkgs.config.permittedInsecurePackages = [
+    "electron-38.8.4"
+  ];
 
 
 
