@@ -40,9 +40,9 @@
       ll = "ls -l";
       nixconf = "nano /home/crispy/.config/nixos/hosts/gamer/configuration.nix";
       pkgconf = "nano /home/crispy/.config/nixos/modules/nixos/packages.nix";
-      nixrebuilds = "sudo nixos-rebuild switch --flake /home/crispy/.config/nixos/#GAMER";
-      nixrebuildt = "sudo nixos-rebuild test --flake /home/crispy/.config/nixos/#GAMER";
-      nixrebuild = "sudo nixos-rebuild";
+      nrs = "sudo nixos-rebuild switch --flake /home/crispy/.config/nixos/#GAMER";
+      nrt = "sudo nixos-rebuild test --flake /home/crispy/.config/nixos/#GAMER";
+      nr = "sudo nixos-rebuild";
       nixcd = "cd ~/.config/nixos";
       nixstoreopt = "nix-store --optimize";
       nixgen = "nixos-rebuild list-generations";
