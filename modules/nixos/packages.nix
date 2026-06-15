@@ -1,6 +1,6 @@
-{ pkgs, ... }: {
- 
-  
+{ pkgs, inputs, ... }: {
+
+
   programs.fish.enable = true;
   programs.steam.enable = true;
 
@@ -13,7 +13,7 @@
     feishin
     alacritty
     discord
-    git  
+    git
     gh
     stoat-desktop
     rofi
@@ -21,7 +21,8 @@
     libva
     libva-utils
     nvidia-vaapi-driver
+    inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
-  environment.systemPackages.inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
+
 
 }
