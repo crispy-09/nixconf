@@ -1,6 +1,6 @@
 { pkgs, ... }: {
  
-  programs.hyprland.enable = true;
+  
   programs.fish.enable = true;
   programs.steam.enable = true;
 
@@ -13,12 +13,15 @@
     feishin
     alacritty
     discord
-    hyprlauncher
     git  
     gh
     stoat-desktop
     rofi
     btop
+    libva
+    libva-utils
+    nvidia-vaapi-driver
   ];
+  environment.systemPackages.inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
 
 }
