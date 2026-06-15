@@ -84,7 +84,7 @@
     useGlobalPkgs = true;
     useUserPackages = true;
     extraSpecialArgs = { inherit inputs; };
-    users.crispy = import ./home.nix;
+    users.crispy = import ../../modules/home-manager/home.nix;
   };
 
   # Allow unfree packages

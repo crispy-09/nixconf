@@ -21,7 +21,7 @@
       specialArgs = {inherit inputs;};
       modules = [
         ./hosts/gamer/configuration.nix
-        inputs.home-manager.nixosModules.default
+        
       ];
     };
   };

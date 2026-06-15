@@ -3,6 +3,7 @@
 
   programs.fish.enable = true;
   programs.steam.enable = true;
+  programs.hyprland.enable = true;
 
   environment.systemPackages = with pkgs; [
     wget
@@ -21,6 +22,7 @@
     libva
     libva-utils
     nvidia-vaapi-driver
+    zed-editor
     inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
 
