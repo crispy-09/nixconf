@@ -1,14 +1,10 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
-
 { config, pkgs, inputs,  ... }:
 
 {
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      ../../modules/nixos/packages.nix
+      ../../modules/nixos/pkg-packs.nix
       ../../modules/nixos/crsp-user.nix
       inputs.home-manager.nixosModules.default
     ];
@@ -79,6 +75,9 @@
   # Install firefox.
   programs.firefox.enable = true;
   programs.partition-manager.enable = true;
+  services.flatpak.enable = true;
+
+  users.users.crispy.extraGroups = [ "wheel" "networkmanager" "video" "render" ];
 
   home-manager = {
     useGlobalPkgs = true;
@@ -89,16 +88,16 @@
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
-  
- 
+
+
  nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
 
  # System Auto Update
  system.autoUpgrade.enable = true;
- system.autoUpgrade.dates = "weekly"; 
+ system.autoUpgrade.dates = "weekly";
  system.autoUpgrade.allowReboot = true;
- system.stateVersion = "26.05"; 
+ system.stateVersion = "26.05";
 
  # Automatic Garbage cleanup
  nix.gc.automatic = true;
@@ -113,12 +112,23 @@
  services.xserver.videoDrivers = [ "nvidia" ] ;
  hardware.nvidia.open = true;
  hardware.nvidia.modesetting.enable = true;
-
+ boot.kernelParams = [ "nvidia_drm.fbdev=1" ];
+ environment.sessionVariables = {
+   LIBVA_DRIVER_NAME = "nvidia";
+   __GLX_VENDOR_LIBRARY_NAME = "nvidia";
+   GBM_BACKEND = "nvidia-drm";
+ };
  # let stoat work ;-;
  nixpkgs.config.permittedInsecurePackages = [
     "electron-38.8.4"
   ];
 
+
+  fileSystems."/mnt/2tb" ={
+    device = "/dev/disk/by-uuid/a6deacb0-fcd1-4f6d-b9c7-be3861b4f995";
+    fsType = "ext4";
+    options = [ "nofail" "users" ];
+  };
 
 
 }

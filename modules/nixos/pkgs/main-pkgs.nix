@@ -6,23 +6,23 @@
   programs.hyprland.enable = true;
 
   environment.systemPackages = with pkgs; [
-    wget
-    dosfstools
-    exfat
-    curl
+
+    nerd-fonts.jetbrains-mono
+
+
+
+
     prusa-slicer
     feishin
     alacritty
     discord
-    git
-    gh
+
     stoat-desktop
-    rofi
-    btop
+
     libva
     libva-utils
     nvidia-vaapi-driver
-    zed-editor
+    egl-wayland
     inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
 
