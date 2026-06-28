@@ -12,6 +12,7 @@
     btop
     android-tools
     zed-editor
+    tree
 
   ];
 

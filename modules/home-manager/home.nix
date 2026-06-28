@@ -32,8 +32,11 @@
 
   programs.git = {
     enable = true;
-    userName = "Nate Johnson";
-    userEmail = "naterjohnson09@gmail.com";
+    settings = {
+      user.name = "Nate Johnson";
+      user.email = "naterjohnson09@gmail.com";
+    };
+
   };
 
 
