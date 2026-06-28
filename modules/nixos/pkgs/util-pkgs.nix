@@ -1,5 +1,7 @@
-{ pkgs, inputs, ... }: {
+{ config, pkgs, inputs, ... }: {
 
+
+  programs.partition-manager.enable = true;
   environment.systemPackages = with pkgs; [
     wget
     superfile
