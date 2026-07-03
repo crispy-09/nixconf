@@ -3,6 +3,9 @@
 
   programs.partition-manager.enable = true;
   environment.systemPackages = with pkgs; [
+    macchanger
+    r2modman
+    easyeffects
     wget
     superfile
     unzip

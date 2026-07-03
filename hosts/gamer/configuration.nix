@@ -3,11 +3,14 @@
 {
   imports =
     [
+      ../../modules/base-conf.nix
+
+
+
       ./hardware-configuration.nix
-      ../../modules/nixos/pkg-packs.nix
-      ../../modules/nixos/crsp-user.nix
-      ../../modules/services/services.nix
       ../../modules/nvidia.nix
+      ../../modules/nixos/pkgs/rice-pkgs.nix
+      ../../modules/nixos/pkgs/util-pkgs.nix
       inputs.home-manager.nixosModules.default
     ];
 

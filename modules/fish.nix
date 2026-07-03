@@ -1,4 +1,4 @@
-{ config, pkgs, ...}:
+{ config, pkgs, osConfig, ...}:
 {
 
 programs.fish = {
@@ -7,10 +7,9 @@ programs.fish = {
   shellAliases = {
     ptest = "ping 1.1.1.1";
     ll = "ls -l";
-    nixconf = "nano /home/crispy/.config/nixos/hosts/gamer/configuration.nix";
-    pkgconf = "nano /home/crispy/.config/nixos/modules/nixos/packages.nix";
-    nrs = "sudo nixos-rebuild switch --flake /home/crispy/.config/nixos/#GAMER";
-    nrt = "sudo nixos-rebuild test --flake /home/crispy/.config/nixos/#GAMER";
+    nixconf = "nano ~/.config/nixos/hosts/${osConfig.networking.hostName}/configuration.nix";
+    nrs = "sudo nixos-rebuild switch --flake ~/.config/nixos/#${osConfig.networking.hostName}";
+    nrt = "sudo nixos-rebuild test --flake ~/.config/nixos/#${osConfig.networking.hostName}";
     nr = "sudo nixos-rebuild";
     nixcd = "cd ~/.config/nixos";
     nixstoreopt = "nix-store --optimize";

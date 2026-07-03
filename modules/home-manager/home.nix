@@ -19,9 +19,16 @@
   ];
 
 
+  wayland.windowManager.hyprland = {
+    enable = true;
+    extraLuaFiles = {
+      conf = ../../external-conf/hypr/hyprland.lua;
+    };
+  };
+
   programs.zed-editor = {
     enable = true;
-    extensions = [ "nix" ];
+    extensions = [ "nix lua" ];
     userSettings = {
       theme = {
         mode = "system";
