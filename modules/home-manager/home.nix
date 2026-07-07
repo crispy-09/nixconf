@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, hostName, ... }:
 
 {
   # Home Manager needs a bit of information about you and the paths it should
@@ -62,9 +62,10 @@
 
 
   home.file = {
-    ".config/hypr/hyprland.lua".source = config.lib.file.mkOutOfStoreSymlink "/home/crispy/.config/nixos/external-conf/hypr/hyprland.lua";
-
-  };
+      ".config/hypr/hyprland.lua".source =
+        config.lib.file.mkOutOfStoreSymlink
+          "/home/crispy/.config/nixos/external-conf/hypr/hosts/${hostName}.lua";
+    };
 
   # Home Manager can also manage your environment variables through
   # 'home.sessionVariables'. These will be explicitly sourced when using a

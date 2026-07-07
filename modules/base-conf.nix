@@ -31,12 +31,12 @@
 
   # Home manager YAAAY
   home-manager = {
-    useGlobalPkgs = true;
-    useUserPackages = true;
-    extraSpecialArgs = { inherit inputs; };
-    users.crispy = import ./home-manager/home.nix;
-    backupFileExtension = "backup";
-  };
+      useGlobalPkgs = true;
+      useUserPackages = true;
+      extraSpecialArgs = { inherit inputs; hostName = config.networking.hostName; };
+      users.crispy = import ./home-manager/home.nix;
+      backupFileExtension = "backup";
+    };
 
   # oooo nix stuff
   nixpkgs.config.allowUnfree = true;
