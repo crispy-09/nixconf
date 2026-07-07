@@ -5,61 +5,15 @@
     [
       ../../modules/base-conf.nix
 
-
-
       ./hardware-configuration.nix
       ../../modules/nvidia.nix
       ../../modules/nixos/pkgs/rice-pkgs.nix
       ../../modules/nixos/pkgs/util-pkgs.nix
+      ../../modules/stylix.nix
       inputs.home-manager.nixosModules.default
     ];
 
-  # Bootloader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-
   networking.hostName = "GAMER";
-  networking.networkmanager.enable = true;
-  time.timeZone = "America/Denver";
-
-  i18n.defaultLocale = "en_US.UTF-8";
-  i18n.extraLocaleSettings = {
-    LC_ADDRESS = "en_US.UTF-8";
-    LC_IDENTIFICATION = "en_US.UTF-8";
-    LC_MEASUREMENT = "en_US.UTF-8";
-    LC_MONETARY = "en_US.UTF-8";
-    LC_NAME = "en_US.UTF-8";
-    LC_NUMERIC = "en_US.UTF-8";
-    LC_PAPER = "en_US.UTF-8";
-    LC_TELEPHONE = "en_US.UTF-8";
-    LC_TIME = "en_US.UTF-8";
-  };
-
-  home-manager = {
-    useGlobalPkgs = true;
-    useUserPackages = true;
-    extraSpecialArgs = { inherit inputs; };
-    users.crispy = import ../../modules/home-manager/home.nix;
-  };
-
-  nixpkgs.config.allowUnfree = true;
-
-
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
-
-
-  # System Auto Update
-  system.autoUpgrade.enable = true;
-  system.autoUpgrade.dates = "weekly";
-  system.autoUpgrade.allowReboot = true;
-  system.stateVersion = "26.05";
-
-  # Automatic Garbage cleanup
-  nix.gc.automatic = true;
-  nix.gc.dates = "daily";
-  nix.gc.options = "--delete-older-than 10d";
-  nix.settings.auto-optimise-store = true;
-
 
 
   # make nvidia work lmao
@@ -73,10 +27,6 @@
     __GLX_VENDOR_LIBRARY_NAME = "nvidia";
     GBM_BACKEND = "nvidia-drm";
   };
-  # let stoat work ;-;
-  nixpkgs.config.permittedInsecurePackages = [
-      "electron-38.8.4"
-    ];
 
 
   fileSystems."/mnt/2tb" = {

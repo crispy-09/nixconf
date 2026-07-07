@@ -12,12 +12,17 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    stylix = {
+      url = "github:nix-community/stylix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, ... }@inputs: {
+  outputs = { self, nixpkgs, stylix, ... }@inputs: {
     nixosConfigurations.GAMER = nixpkgs.lib.nixosSystem {
       specialArgs = {inherit inputs;};
       modules = [
+        stylix.nixosModules.stylix
         ./hosts/gamer/configuration.nix
 
       ];
@@ -25,6 +30,7 @@
     nixosConfigurations.lenovo = nixpkgs.lib.nixosSystem {
       specialArgs = {inherit inputs;};
       modules = [
+        stylix.nixosModules.stylix
         ./hosts/lenovo/configuration.nix
 
       ];
