@@ -24,12 +24,6 @@
   programs.zed-editor = {
     enable = true;
     extensions = [ "nix, lua" ];
-    userSettings = {
-      theme = {
-        mode = "system";
-        dark = "One Dark";
-      };
-    };
   };
 
   programs.git = {

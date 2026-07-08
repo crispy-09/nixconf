@@ -2,6 +2,6 @@
 {
   stylix = {
     enable = true;
-    image = /home/crispy/Pictures/Wallpapers/golden.jpg;
+    image = ../assets/wallpapers/golden.jpg;
   };
 }
