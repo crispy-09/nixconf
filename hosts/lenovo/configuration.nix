@@ -4,6 +4,7 @@
   imports =
     [
       ../../modules/base-conf.nix
+      ../../modules/stylix.nix
 
 
 

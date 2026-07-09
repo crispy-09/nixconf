@@ -18,7 +18,6 @@
     android-tools
     zed-editor
     tree
-
   ];
 
 

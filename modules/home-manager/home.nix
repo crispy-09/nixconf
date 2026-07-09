@@ -64,6 +64,7 @@
 
 
   stylix.targets.zed.enable = true;
+  stylix.targets.hyprland.enable = true;
   stylix.targets.zen-browser = {
     enable = true;
     profileNames = [ "Default Profile" ];
