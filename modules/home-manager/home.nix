@@ -16,14 +16,22 @@
 
   imports = [
     ../fish.nix
+    inputs.zen-browser.homeModules.twilight
   ];
 
-
+  programs.zen-browser = {
+    enable = true;
+    profiles = {
+      "Default Profile" = {
+        isDefault = true;
+      };
+    };
+  };
 
 
   programs.zed-editor = {
     enable = true;
-    extensions = [ "nix, lua" ];
+    extensions = [ "nix" "lua" ];
   };
 
   programs.git = {
@@ -55,28 +63,21 @@
   };
 
 
+  stylix.targets.zed.enable = true;
+  stylix.targets.zen-browser = {
+    enable = true;
+    profileNames = [ "Default Profile" ];
+  };
+
+
+
   home.file = {
       ".config/hypr/hyprland.lua".source =
         config.lib.file.mkOutOfStoreSymlink
           "/home/crispy/.config/nixos/external-conf/hypr/hosts/${hostName}.lua";
     };
 
-  # Home Manager can also manage your environment variables through
-  # 'home.sessionVariables'. These will be explicitly sourced when using a
-  # shell provided by Home Manager. If you don't want to manage your shell
-  # through Home Manager then you have to manually source 'hm-session-vars.sh'
-  # located at either
-  #
-  #  ~/.nix-profile/etc/profile.d/hm-session-vars.sh
-  #
-  # or
-  #
-  #  ~/.local/state/nix/profiles/profile/etc/profile.d/hm-session-vars.sh
-  #
-  # or
-  #
-  #  /etc/profiles/per-user/crispy/etc/profile.d/hm-session-vars.sh
-  #
+
   home.sessionVariables = {
     # EDITOR = "emacs";
   };
