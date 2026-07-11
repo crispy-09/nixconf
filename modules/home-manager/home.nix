@@ -40,6 +40,9 @@
       user.name = "Nate Johnson";
       user.email = "naterjohnson09@gmail.com";
     };
+    extraConfig = {
+        credential.helper = "!${pkgs.gh}/bin/gh auth git-credential";
+      };
 
   };
 
