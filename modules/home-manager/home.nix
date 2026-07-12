@@ -16,6 +16,7 @@
 
   imports = [
     ../fish.nix
+    ../hyprland.nix
     inputs.zen-browser.homeModules.twilight
   ];
 
@@ -75,11 +76,7 @@
 
 
 
-  home.file = {
-      ".config/hypr/hyprland.lua".source =
-        config.lib.file.mkOutOfStoreSymlink
-          "/home/crispy/.config/nixos/external-conf/hypr/hosts/${hostName}.lua";
-    };
+
 
 
   home.sessionVariables = {

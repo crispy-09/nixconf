@@ -18,6 +18,7 @@
     android-tools
     zed-editor
     tree
+    nix-search-tv
   ];
 
 
