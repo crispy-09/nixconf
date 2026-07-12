@@ -30,6 +30,19 @@
   };
 
 
+  programs.nix-search-tv = {
+    enable = true;
+    enableTelevisionIntegration = true;
+    settings = {
+        indexes = [ "nixpkgs" "home-manager" "nixos" ];
+      };
+  };
+  programs.vesktop.enable = true;
+  programs.bat.enable = true;
+  programs.fd.enable = true;
+  programs.television.enable = true;
+  programs.rofi.enable = true;
+
   programs.zed-editor = {
     enable = true;
     extensions = [ "nix" "lua" ];
@@ -67,14 +80,18 @@
   };
 
 
-  stylix.targets.zed.enable = true;
-  stylix.targets.hyprland.enable = true;
-  stylix.targets.zen-browser = {
-    enable = true;
-    profileNames = [ "Default Profile" ];
+
+
+  stylix.targets = {
+    zed.enable = true;
+    hyprland.enable = true;
+    vesktop.enable = true;
+    rofi.enable = true;
+    zen-browser = {
+      enable = true;
+      profileNames = ["Default Profile"];
+    };
   };
-
-
 
 
 

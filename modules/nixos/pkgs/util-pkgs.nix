@@ -19,6 +19,9 @@
     zed-editor
     tree
     nix-search-tv
+    television
+    fzf
+    discordo
   ];
 
 

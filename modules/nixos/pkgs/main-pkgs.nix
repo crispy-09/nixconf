@@ -15,7 +15,7 @@
     prusa-slicer
     feishin
     alacritty
-    discord
+    vesktop
 
     stoat-desktop
 
