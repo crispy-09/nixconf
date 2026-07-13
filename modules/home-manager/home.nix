@@ -1,63 +1,63 @@
-{ config, pkgs, inputs, hostName, ... }:
+{ config, pkgs, inputs, hostName, lib, ... }:
 
 {
-  # Home Manager needs a bit of information about you and the paths it should
-  # manage.
   home.username = "crispy";
   home.homeDirectory = "/home/crispy";
-
-  home.stateVersion = "26.05"; # Please read the comment before changing.
-
-  # The home.packages option allows you to install Nix packages into your
-  # environment.
+  home.stateVersion = "26.05";
   home.packages = [
 
   ];
 
   imports = [
     ../fish.nix
-    ../hyprland.nix
+    ../hyprland/common.nix
+    ../hyprland/${hostName}.nix
     inputs.zen-browser.homeModules.twilight
   ];
 
-  programs.zen-browser = {
-    enable = true;
-    profiles = {
-      "Default Profile" = {
-        isDefault = true;
+  programs = {
+    btop.enable = true;
+    vesktop.enable = true;
+    bat.enable = true;
+    fd.enable = true;
+    television.enable = true;
+    rofi.enable = true;
+
+    zen-browser = {
+      enable = true;
+      profiles = {
+        "Default Profile" = {
+          isDefault = true;
+        };
       };
     };
-  };
 
-
-  programs.nix-search-tv = {
-    enable = true;
-    enableTelevisionIntegration = true;
-    settings = {
-        indexes = [ "nixpkgs" "home-manager" "nixos" ];
-      };
-  };
-  programs.vesktop.enable = true;
-  programs.bat.enable = true;
-  programs.fd.enable = true;
-  programs.television.enable = true;
-  programs.rofi.enable = true;
-
-  programs.zed-editor = {
-    enable = true;
-    extensions = [ "nix" "lua" ];
-  };
-
-  programs.git = {
-    enable = true;
-    settings = {
-      user.name = "Nate Johnson";
-      user.email = "naterjohnson09@gmail.com";
+    nix-search-tv = {
+      enable = true;
+      enableTelevisionIntegration = true;
+      settings = {
+          indexes = [ "nixpkgs" "home-manager" "nixos" ];
+        };
     };
-    extraConfig = {
-        credential.helper = "!${pkgs.gh}/bin/gh auth git-credential";
-      };
 
+    zed-editor = {
+      enable = true;
+      extensions = [ "nix" "lua" ];
+      mutableUserSettings = false;
+
+    };
+
+    git = {
+      enable = true;
+      settings = {
+        user.name = "Nate Johnson";
+        user.email = "naterjohnson09@gmail.com";
+      };
+      extraConfig = {
+          credential.helper = "!${pkgs.gh}/bin/gh auth git-credential";
+        };
+
+    };
   };
 
   services.hyprpaper = {
@@ -84,6 +84,7 @@
 
   stylix.targets = {
     zed.enable = true;
+    btop.enable = true;
     hyprland.enable = true;
     vesktop.enable = true;
     rofi.enable = true;
@@ -93,6 +94,14 @@
     };
   };
 
+  # Used to correctly theme zed
+  home.activation.fixZedThemeAppearance = lib.hm.dag.entryAfter [ "linkGeneration" ] ''
+      themeFile="${config.xdg.configHome}/zed/themes/stylix.json"
+      if [ -e "$themeFile" ]; then
+        $DRY_RUN_CMD ${pkgs.jq}/bin/jq '.themes[0].appearance = "dark"' "$themeFile" > "$themeFile.tmp"
+        $DRY_RUN_CMD mv "$themeFile.tmp" "$themeFile"
+      fi
+    '';
 
 
 
